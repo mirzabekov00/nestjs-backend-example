@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface UserCreationAttributes {
@@ -7,6 +8,7 @@ interface UserCreationAttributes {
 
 @Table({ tableName: "users" })
 export class User extends Model<User, UserCreationAttributes> {
+  @ApiProperty({ example: 1, description: "unique, primary user id" })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -15,6 +17,7 @@ export class User extends Model<User, UserCreationAttributes> {
   })
   id: number;
 
+  @ApiProperty({ example: "eldar@gmail.com", description: "user e-mail" })
   @Column({
     type: DataType.STRING,
     unique: true,
@@ -22,18 +25,21 @@ export class User extends Model<User, UserCreationAttributes> {
   })
   email: string;
 
+  @ApiProperty({ example: "test777", description: "user password" })
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
   password: string;
 
+  @ApiProperty({ example: true, description: "is user banned" })
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
   banned: boolean;
 
+  @ApiProperty({ example: "trolling", description: "is user banned" })
   @Column({
     type: DataType.STRING,
     allowNull: true,
