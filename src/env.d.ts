@@ -6,5 +6,6 @@ declare namespace NodeJS {
     POSTGRES_DB: string;
     POSTGRES_PASSWORD: string;
     POSTGRES_PORT: string;
+    JWT_SECRET: string;
   }
 }
