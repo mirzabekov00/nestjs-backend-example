@@ -11,6 +11,7 @@ async function bootstrap() {
     .setDescription("rest api documentation")
     .setVersion("1.0.0")
     .addTag("mirzabekov")
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

@@ -1,5 +1,10 @@
 import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from "@nestjs/swagger";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { Roles } from "src/auth/roles.decorator";
 import { RolesGuard } from "src/auth/roles.guard";
@@ -23,6 +28,7 @@ export class UsersController {
   @ApiOperation({ summary: "get all users" })
   @ApiResponse({ status: 200, type: [User] })
   @Roles("admin")
+  @ApiBearerAuth()
   @UseGuards(RolesGuard)
   @UseGuards(JwtAuthGuard)
   @Get()
@@ -33,6 +39,7 @@ export class UsersController {
   @ApiOperation({ summary: "add role to any user" })
   @ApiResponse({ status: 200 })
   @Roles("admin")
+  @ApiBearerAuth()
   @UseGuards(RolesGuard)
   @UseGuards(JwtAuthGuard)
   @Post("/role")
