@@ -60,12 +60,6 @@ export class User extends Model<User, UserCreationAttributes> {
   @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];
 
-  @ForeignKey(() => User)
-  @Column({
-    type: DataType.INTEGER,
-  })
-  userId: number;
-
   @HasMany(() => Post)
   posts: Post[];
 }
