@@ -11,6 +11,7 @@ import { UserRoles } from "./roles/user-roles.model";
 import { AuthModule } from "./auth/auth.module";
 import { PostsModule } from "./posts/posts.module";
 import { Post } from "./posts/posts.model";
+import { FilesModule } from './files/files.module';
 
 @Module({
   controllers: [AppController],
@@ -33,6 +34,7 @@ import { Post } from "./posts/posts.model";
     RolesModule,
     AuthModule,
     PostsModule,
+    FilesModule,
   ],
 })
 export class AppModule {}
